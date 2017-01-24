@@ -20,13 +20,11 @@ def calibrate():
         img = cv2.imread("./camera_cal/" + chessboard)
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         ret, corners = cv2.findChessboardCorners(gray, (nx, ny), None)
-        print(chessboard)
         if ret:
             objpoints.append(objp)
             imgpoints.append(corners)
-            print(ret)
 
-    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, (img.shape[0], img.shape[1]), None, None)
+    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 
     calibration_parameters = {}
     calibration_parameters["mtx"] = mtx

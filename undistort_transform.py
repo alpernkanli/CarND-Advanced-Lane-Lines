@@ -18,6 +18,6 @@ class UndistortTransform:
     def perspective_transform(self, image):
         M = cv2.getPerspectiveTransform(self.source_points, self.destination_points)
         Minv = cv2.getPerspectiveTransform(self.destination_points, self.source_points)
-        warped = cv2.warpPerspective(image, M, image.shape[0:2], flags=cv2.INTER_LINEAR)
+        warped = cv2.warpPerspective(image, M, (image.shape[1], image.shape[0]), flags=cv2.INTER_LINEAR)
 
         return warped, Minv
