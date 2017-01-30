@@ -15,11 +15,15 @@ class Line:
         self.all_x = None
         self.all_y = None
 
-class LineFinder:
+class LaneFinder:
     def __init__(self):
         return
 
+    def initial_histogram(self, image):
+
+
     def histogram_window(self):
+
         return
 
     def measure_curvature(self):
